@@ -10,6 +10,25 @@
 #include <string>
 #include <sstream>
 
+
+int numberOfMark(std::string number)
+{
+    int i=0;
+    int zeroMarks;
+    char point='.';
+    int numberZero=0;
+    for(i = 0; i < number.length(); i++)
+        if (number[i] != point)
+        {
+            zeroMarks++;
+        }
+        else
+        {
+            zeroMarks=0;
+        }
+    return zeroMarks;
+}
+
 void ConvertFromSymbolic(std::string number)
 {
     //jezli by nie bylo "using namespace std;" to bym musial zapisac std::string numberWithLetter;
@@ -18,6 +37,9 @@ void ConvertFromSymbolic(std::string number)
     string change (".");
     char choice;
     int i=0;
+    int j=0;
+    int numberMark;
+    
 
     while (number[i] != '\0')
     {
@@ -26,9 +48,26 @@ void ConvertFromSymbolic(std::string number)
         i++;
         }
         cout << "\nLiczba znakow w liczbie to: \t" << i << "\n";
+    
+    //ponizej przeliczam ile znakow jest do momentu napotkania kropki
+    //uzywam petli oraz komensy nazwastringa.lengh by petla dzialala do konca stringa
+    //tworzefunkcje przeliczajaca ilosc znakow do kropki
+    //funkcja  numberOfMark zliczam ilosc zer do odjecia w stringu jakby
+    std::size_t found = number.rfind(change);
+    if (found!=std::string::npos)
+    {
+        numberMark=numberOfMark(number);
+    }
+    else
+    {
+        numberMark=1;
+    }
+    
+    cout << "\nLiczba znakow do usuniecia: \t" << numberMark << "\n";
+    
+    
         
-        
-        //ponizej sprawdzam czy ostatni znak stringa jest litera tak by moc dokonac wyboru
+        //ponizej sprawdzam czy ostatni znak stringa jest literax tak by moc dokonac wyboru
         if (isalpha(choice))
         {
             cout << "\nLiczba zostanie przeksztalcona przez wartosc symbolu: \t" << choice << "\n";
@@ -37,14 +76,14 @@ void ConvertFromSymbolic(std::string number)
                 case 'M':
                 {
                     //funkcja insert wstawiam za liczbe ciag zer
-                    number.insert( i-1, " 000 000" );
+                    number.insert( i-1, "000000" );
                     //usuwam ze stringa litere ktora przerzucilem na koniec stringa
-                    number.erase( number.size() -1 );
+                    number.erase( number.size() -(numberMark) );
                     //ponizej sprawdzam czy jest kropka w stringu, jezeli jest to w pozniejszym etapie programu
                     //usuwam kropke i zamieniam ja spacja
                     std::size_t found = number.rfind(change);
                     if (found!=std::string::npos)
-                        number.replace (found,change.length()," ");
+                        number.replace (found,change.length(),"");
                     cout << "\nTwoja liczba po przeksztalceniu to: \n" << number;
                     cout << "\nSuper ! Wlasnie przeksztalciles podana przez Ciebie liczbe. Gratulacje !";
                     break;
@@ -52,14 +91,14 @@ void ConvertFromSymbolic(std::string number)
                 case 'B':
                 {
                     //funkcja insert wstawiam za liczbe ciag zer
-                    number.insert( i-1, " 000 000 000" );
+                    number.insert( i-1, "000000000" );
                     //usuwam ze stringa litere ktora przerzucilem na koniec stringa
-                    number.erase( number.size() -1 );
+                    number.erase( number.size() -(numberMark) );
                     //ponizej sprawdzam czy jest kropka w stringu, jezeli jest to w pozniejszym etapie programu
                     //usuwam kropke i zamieniam ja spacja
                     std::size_t found = number.rfind(change);
                     if (found!=std::string::npos)
-                        number.replace (found,change.length()," ");
+                        number.replace (found,change.length(),"");
                     cout << "\nTwoja liczba po przeksztalceniu to: \n" << number;
                     cout << "\nSuper ! Wlasnie przeksztalciles podana przez Ciebie liczbe. Gratulacje !";
                     break;
@@ -67,14 +106,14 @@ void ConvertFromSymbolic(std::string number)
                 case 'T':
                 {
                     //funkcja insert wstawiam za liczbe ciag zer
-                    number.insert( i-1, " 000 000 000 000" );
+                    number.insert( i-1, "000000000000" );
                     //usuwam ze stringa litere ktora przerzucilem na koniec stringa
-                    number.erase( number.size() -1 );
+                    number.erase( number.size() -(numberMark) );
                     //ponizej sprawdzam czy jest kropka w stringu, jezeli jest to w pozniejszym etapie programu
                     //usuwam kropke i zamieniam ja spacja
                     std::size_t found = number.rfind(change);
                     if (found!=std::string::npos)
-                        number.replace (found,change.length()," ");
+                        number.replace (found,change.length(),"");
                     cout << "\nTwoja liczba po przeksztalceniu to: \n" << number;
                     cout << "\nSuper ! Wlasnie przeksztalciles podana przez Ciebie liczbe. Gratulacje !";
                     break;
@@ -82,14 +121,14 @@ void ConvertFromSymbolic(std::string number)
                 case 'Q':
                 {
                     //funkcja insert wstawiam za liczbe ciag zer
-                    number.insert( i-1, " 000 000 000 000 000" );
+                    number.insert( i-1, "000000000000000" );
                     //usuwam ze stringa litere ktora przerzucilem na koniec stringa
-                    number.erase( number.size() -1 );
+                    number.erase( number.size() -(numberMark) );
                     //ponizej sprawdzam czy jest kropka w stringu, jezeli jest to w pozniejszym etapie programu
                     //usuwam kropke i zamieniam ja spacja
                     std::size_t found = number.rfind(change);
                     if (found!=std::string::npos)
-                        number.replace (found,change.length()," ");
+                        number.replace (found,change.length(),"");
                     cout << "\nTwoja liczba po przeksztalceniu to: \n" << number;
                     cout << "\nSuper ! Wlasnie przeksztalciles podana przez Ciebie liczbe. Gratulacje !";
                     break;
@@ -97,14 +136,14 @@ void ConvertFromSymbolic(std::string number)
                 case 'q':
                 {
                     //funkcja insert wstawiam za liczbe ciag zer
-                    number.insert( i-1, " 000 000 000 000 000 000" );
+                    number.insert( i-1, "000000000000000000" );
                     //usuwam ze stringa litere ktora przerzucilem na koniec stringa
-                    number.erase( number.size() -1 );
+                    number.erase( number.size() -(numberMark) );
                     //ponizej sprawdzam czy jest kropka w stringu, jezeli jest to w pozniejszym etapie programu
                     //usuwam kropke i zamieniam ja spacja
                     std::size_t found = number.rfind(change);
                     if (found!=std::string::npos)
-                        number.replace (found,change.length()," ");
+                        number.replace (found,change.length(),"");
                     cout << "\nTwoja liczba po przeksztalceniu to: \n" << number;
                     cout << "\nSuper ! Wlasnie przeksztalciles podana przez Ciebie liczbe. Gratulacje !";
                     break;
@@ -112,14 +151,14 @@ void ConvertFromSymbolic(std::string number)
                 case 'S':
                 {
                     //funkcja insert wstawiam za liczbe ciag zer
-                    number.insert( i-1, " 000 000 000 000 000 000 000" );
+                    number.insert( i-1, "000000000000000000000" );
                     //usuwam ze stringa litere ktora przerzucilem na koniec stringa
-                    number.erase( number.size() -1 );
+                    number.erase( number.size() -(numberMark) );
                     //ponizej sprawdzam czy jest kropka w stringu, jezeli jest to w pozniejszym etapie programu
                     //usuwam kropke i zamieniam ja spacja
                     std::size_t found = number.rfind(change);
                     if (found!=std::string::npos)
-                        number.replace (found,change.length()," ");
+                        number.replace (found,change.length(),"");
                     cout << "\nTwoja liczba po przeksztalceniu to: \n" << number;
                     cout << "\nSuper ! Wlasnie przeksztalciles podana przez Ciebie liczbe. Gratulacje !";
                     break;
@@ -127,14 +166,14 @@ void ConvertFromSymbolic(std::string number)
                 case 's':
                 {
                     //funkcja insert wstawiam za liczbe ciag zer
-                    number.insert( i-1, " 000 000 000 000 000 000 000 000" );
+                    number.insert( i-1, "000000000000000000000000" );
                     //usuwam ze stringa litere ktora przerzucilem na koniec stringa
-                    number.erase( number.size() -1 );
+                    number.erase( number.size() -(numberMark) );
                     //ponizej sprawdzam czy jest kropka w stringu, jezeli jest to w pozniejszym etapie programu
                     //usuwam kropke i zamieniam ja spacja
                     std::size_t found = number.rfind(change);
                     if (found!=std::string::npos)
-                        number.replace (found,change.length()," ");
+                        number.replace (found,change.length(),"");
                     cout << "\nTwoja liczba po przeksztalceniu to: \n" << number;
                     cout << "\nSuper ! Wlasnie przeksztalciles podana przez Ciebie liczbe. Gratulacje !";
                     break;
@@ -142,14 +181,14 @@ void ConvertFromSymbolic(std::string number)
                 case 'O':
                 {
                     //funkcja insert wstawiam za liczbe ciag zer
-                    number.insert( i-1, " 000 000 000 000 000 000 000 000 000" );
+                    number.insert( i-1, "000000000000000000000000000" );
                     //usuwam ze stringa litere ktora przerzucilem na koniec stringa
-                    number.erase( number.size() -1 );
+                    number.erase( number.size() -(numberMark) );
                     //ponizej sprawdzam czy jest kropka w stringu, jezeli jest to w pozniejszym etapie programu
                     //usuwam kropke i zamieniam ja spacja
                     std::size_t found = number.rfind(change);
                     if (found!=std::string::npos)
-                        number.replace (found,change.length()," ");
+                        number.replace (found,change.length(),"");
                     cout << "\nTwoja liczba po przeksztalceniu to: \n" << number;
                     cout << "\nSuper ! Wlasnie przeksztalciles podana przez Ciebie liczbe. Gratulacje !";
                     break;
@@ -177,12 +216,8 @@ int main()
     string number;
     string temp;
     string change (".");
-    char choice;
+
     int exit=0;
-    int i=0;
-    int j=0;
-    int dot;
-    int numberOfdelete=0;
     char continuation;
     
     

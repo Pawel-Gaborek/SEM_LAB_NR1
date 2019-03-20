@@ -10,6 +10,28 @@
 #include <string>
 #include <sstream>
 
+
+
+int numberOfMark(std::string number)
+{
+    int i=0;
+    int zeroMarks;
+    char point='.';
+    int numberZero=0;
+    for(i = 0; i < number.length(); i++)
+        if (number[i] != point)
+        {
+            zeroMarks++;
+        }
+        else
+        {
+            zeroMarks=0;
+        }
+    return zeroMarks;
+}
+
+
+
 int main()
 {
     //jezli by nie bylo "using namespace std;" to bym musial zapisac std::string numberWithLetter;
@@ -25,6 +47,7 @@ int main()
     int j=0;
     int dot;
     int numberOfdelete=0;
+    int numberMark;
     char continuation;
     
     //rozpoczynam pierwsza petle z menu kontekstowego, zakonczeniem tej petli bedzie
@@ -67,6 +90,19 @@ int main()
         cout << "\nLiczba znakow w liczbie to: \t" << i << "\n";
         
         
+        std::size_t found = number.rfind(change);
+        if (found!=std::string::npos)
+        {
+            numberMark=numberOfMark(number);
+        }
+        else
+        {
+            numberMark=1;
+        }
+        
+        cout << "\nLiczba znakow do usuniecia: \t" << numberMark << "\n";
+        
+        
         //ponizej sprawdzam czy ostatni znak stringa jest litera tak by moc dokonac wyboru
         if (isalpha(choice))
         {
@@ -76,14 +112,14 @@ int main()
                 case 'M':
                 {
                     //funkcja insert wstawiam za liczbe ciag zer
-                    number.insert( i-1, " 000 000" );
+                    number.insert( i-1, "000000" );
                     //usuwam ze stringa litere ktora przerzucilem na koniec stringa
-                    number.erase( number.size() -1 );
+                    number.erase( number.size() -(numberMark) );
                     //ponizej sprawdzam czy jest kropka w stringu, jezeli jest to w pozniejszym etapie programu
                     //usuwam kropke i zamieniam ja spacja
                     std::size_t found = number.rfind(change);
                     if (found!=std::string::npos)
-                        number.replace (found,change.length()," ");
+                        number.replace (found,change.length(),"");
                     cout << "\nTwoja liczba po przeksztalceniu to: \n" << number;
                     cout << "\nSuper ! Wlasnie przeksztalciles podana przez Ciebie liczbe. Gratulacje !";
                     break;
@@ -91,14 +127,14 @@ int main()
                 case 'B':
                 {
                     //funkcja insert wstawiam za liczbe ciag zer
-                    number.insert( i-1, " 000 000 000" );
+                    number.insert( i-1, "000000000" );
                     //usuwam ze stringa litere ktora przerzucilem na koniec stringa
-                    number.erase( number.size() -1 );
+                    number.erase( number.size() -(numberMark) );
                     //ponizej sprawdzam czy jest kropka w stringu, jezeli jest to w pozniejszym etapie programu
                     //usuwam kropke i zamieniam ja spacja
                     std::size_t found = number.rfind(change);
                     if (found!=std::string::npos)
-                        number.replace (found,change.length()," ");
+                        number.replace (found,change.length(),"");
                     cout << "\nTwoja liczba po przeksztalceniu to: \n" << number;
                     cout << "\nSuper ! Wlasnie przeksztalciles podana przez Ciebie liczbe. Gratulacje !";
                     break;
@@ -106,14 +142,14 @@ int main()
                 case 'T':
                 {
                     //funkcja insert wstawiam za liczbe ciag zer
-                    number.insert( i-1, " 000 000 000 000" );
+                    number.insert( i-1, "000000000000" );
                     //usuwam ze stringa litere ktora przerzucilem na koniec stringa
-                    number.erase( number.size() -1 );
+                    number.erase( number.size() -(numberMark) );
                     //ponizej sprawdzam czy jest kropka w stringu, jezeli jest to w pozniejszym etapie programu
                     //usuwam kropke i zamieniam ja spacja
                     std::size_t found = number.rfind(change);
                     if (found!=std::string::npos)
-                        number.replace (found,change.length()," ");
+                        number.replace (found,change.length(),"");
                     cout << "\nTwoja liczba po przeksztalceniu to: \n" << number;
                     cout << "\nSuper ! Wlasnie przeksztalciles podana przez Ciebie liczbe. Gratulacje !";
                     break;
@@ -121,14 +157,14 @@ int main()
                 case 'Q':
                 {
                     //funkcja insert wstawiam za liczbe ciag zer
-                    number.insert( i-1, " 000 000 000 000 000" );
+                    number.insert( i-1, "000000000000000" );
                     //usuwam ze stringa litere ktora przerzucilem na koniec stringa
-                    number.erase( number.size() -1 );
+                    number.erase( number.size() -(numberMark) );
                     //ponizej sprawdzam czy jest kropka w stringu, jezeli jest to w pozniejszym etapie programu
                     //usuwam kropke i zamieniam ja spacja
                     std::size_t found = number.rfind(change);
                     if (found!=std::string::npos)
-                        number.replace (found,change.length()," ");
+                        number.replace (found,change.length(),"");
                     cout << "\nTwoja liczba po przeksztalceniu to: \n" << number;
                     cout << "\nSuper ! Wlasnie przeksztalciles podana przez Ciebie liczbe. Gratulacje !";
                     break;
@@ -136,14 +172,14 @@ int main()
                 case 'q':
                 {
                     //funkcja insert wstawiam za liczbe ciag zer
-                    number.insert( i-1, " 000 000 000 000 000 000" );
+                    number.insert( i-1, "000000000000000000" );
                     //usuwam ze stringa litere ktora przerzucilem na koniec stringa
-                    number.erase( number.size() -1 );
+                    number.erase( number.size() -(numberMark) );
                     //ponizej sprawdzam czy jest kropka w stringu, jezeli jest to w pozniejszym etapie programu
                     //usuwam kropke i zamieniam ja spacja
                     std::size_t found = number.rfind(change);
                     if (found!=std::string::npos)
-                        number.replace (found,change.length()," ");
+                        number.replace (found,change.length(),"");
                     cout << "\nTwoja liczba po przeksztalceniu to: \n" << number;
                     cout << "\nSuper ! Wlasnie przeksztalciles podana przez Ciebie liczbe. Gratulacje !";
                     break;
@@ -151,14 +187,14 @@ int main()
                 case 'S':
                 {
                     //funkcja insert wstawiam za liczbe ciag zer
-                    number.insert( i-1, " 000 000 000 000 000 000 000" );
+                    number.insert( i-1, "000000000000000000000" );
                     //usuwam ze stringa litere ktora przerzucilem na koniec stringa
-                    number.erase( number.size() -1 );
+                    number.erase( number.size() -(numberMark) );
                     //ponizej sprawdzam czy jest kropka w stringu, jezeli jest to w pozniejszym etapie programu
                     //usuwam kropke i zamieniam ja spacja
                     std::size_t found = number.rfind(change);
                     if (found!=std::string::npos)
-                        number.replace (found,change.length()," ");
+                        number.replace (found,change.length(),"");
                     cout << "\nTwoja liczba po przeksztalceniu to: \n" << number;
                     cout << "\nSuper ! Wlasnie przeksztalciles podana przez Ciebie liczbe. Gratulacje !";
                     break;
@@ -166,9 +202,9 @@ int main()
                 case 's':
                 {
                     //funkcja insert wstawiam za liczbe ciag zer
-                    number.insert( i-1, " 000 000 000 000 000 000 000 000" );
+                    number.insert( i-1, "000000000000000000000000" );
                     //usuwam ze stringa litere ktora przerzucilem na koniec stringa
-                    number.erase( number.size() -1 );
+                    number.erase( number.size() -(numberMark) );
                     //ponizej sprawdzam czy jest kropka w stringu, jezeli jest to w pozniejszym etapie programu
                     //usuwam kropke i zamieniam ja spacja
                     std::size_t found = number.rfind(change);
@@ -181,9 +217,9 @@ int main()
                 case 'O':
                 {
                     //funkcja insert wstawiam za liczbe ciag zer
-                    number.insert( i-1, " 000 000 000 000 000 000 000 000 000" );
+                    number.insert( i-1, "000000000000000000000000000" );
                     //usuwam ze stringa litere ktora przerzucilem na koniec stringa
-                    number.erase( number.size() -1 );
+                    number.erase( number.size() -(numberMark) );
                     //ponizej sprawdzam czy jest kropka w stringu, jezeli jest to w pozniejszym etapie programu
                     //usuwam kropke i zamieniam ja spacja
                     std::size_t found = number.rfind(change);
